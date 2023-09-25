@@ -49,4 +49,13 @@ Route::middleware([
     //AdminCrudRoutes
 
     Route::get('/admin/index',[adminController::class,"index"])->name('admin.index');
+
+    ////User Create
+    Route::post('/create_user',[adminController::class,"user_create"])->name('user.create');
+
+    ////User Edit
+    Route::get('/edit_user',[adminController::class,"user_edit"])->name('user.edit');
+
+    ////User Edit Action
+    Route::post('/edit_user_action',[adminController::class,"user_edit_action"])->name('user.edit.action');
 });

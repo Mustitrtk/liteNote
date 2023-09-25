@@ -17,6 +17,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$note->title}}</h5>
                         <p class="card-text">{{$note->theme}}</p>
+
+                        <!--Button Trigger Modal-->
                         <button type="button" onclick="edit({{$note}})" data-toggle="modal" data-target="#updateNoteModal" class="btn btn-info">Güncelle</button>
                         <button type="button" class="btn btn-danger" onclick="del({{$note->id}})">Sil</button>
                     </div>
