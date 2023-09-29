@@ -42,11 +42,11 @@
                         @csrf
                         <div class="form-group">
                             <label for="title">Başlık</label>
-                            <input required value="{{old('title')}}" name="title" type="text" class="form-control" id="title" placeholder="Başlık">
+                            <input value="{{old('title')}}" name="title" type="text" class="form-control" id="title" placeholder="Başlık">
                         </div>
                         <div class="form-group">
                             <label for="theme">İçerik</label>
-                            <input required value="{{old('theme')}}" name="theme" type="text" class="form-control" id="theme" placeholder="Metin">
+                            <input value="{{old('theme')}}" name="theme" type="text" class="form-control" id="theme" placeholder="Metin">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -72,11 +72,11 @@
                         <input type="hidden" name="yid" id="yid">
                         <div class="form-group">
                             <label for="title">Başlık</label>
-                            <input required name="ytitle" type="text" class="form-control" id="ytitle" placeholder="Başlık">
+                            <input name="ytitle" type="text" class="form-control" id="ytitle" placeholder="Başlık">
                         </div>
                         <div class="form-group">
                             <label for="theme">İçerik</label>
-                            <input required name="ytheme" type="text"  class="form-control" id="ytheme" placeholder="Metin">
+                            <input name="ytheme" type="text"  class="form-control" id="ytheme" placeholder="Metin">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -123,11 +123,11 @@
                         }
                     })
                 },
-                error: function (data) {
+                error: function (xhr,status,error) {
                     Swal.fire({
                         icon: 'error',
                         title: 'başarısız',
-                        text: 'işlem başarısız',
+                        text: error,
                     })
                 }
             });
@@ -149,9 +149,11 @@
                 },
                 error: function (xhr,status,error)
                 {
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'başarısız',
+                        text: error,
+                    })
                 }
             });
         }
@@ -169,12 +171,24 @@
                 processData: false,
                 data: df,
                 success: function (data) {
-                    console.log(data);
-                    $('#updateNoteModal').modal('hide');
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        text: 'işlem başarılı',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            $('#updateNoteModal').modal('hide');
+                            location.reload();
+                        }
+                    })
                 },
-                error: function (data) {
-                    console.log(data);
+                error: function (xhr,status,error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'başarısız',
+                        text: error,
+                    })
                 }
             });
         });

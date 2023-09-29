@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateNoteValidationRequest;
+use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ class noteController extends Controller
         return response()->json(['data' => $note]);
     }
 
-    public function note_update(Request $request){
+    public function note_update(UpdateNoteRequest $request){
         $result = Note::findOrFail($request->yid);
 
         if(isset($result)){
