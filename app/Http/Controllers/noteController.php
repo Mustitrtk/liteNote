@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateNoteValidationRequest;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,9 @@ class noteController extends Controller
 {
     //
 
-    public function note_create(Request $request)
+    public function note_create(CreateNoteValidationRequest $request)
     {
-
+        $request->validated();
         $result = Note::create([
             'user_id' => Auth::user()->id,
             'title' => $request->title,
