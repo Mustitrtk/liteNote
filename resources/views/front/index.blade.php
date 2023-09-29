@@ -111,12 +111,24 @@
                 processData: false,
                 data: df,
                 success: function (data) {
-                    console.log(data);
-                    $('#createNoteModal').modal('hide');
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        text: 'işlem başarılı',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            $('#createNoteModal').modal('hide');
+                            location.reload();
+                        }
+                    })
                 },
                 error: function (data) {
-                    console.log(data);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'başarısız',
+                        text: 'işlem başarısız',
+                    })
                 }
             });
         });
