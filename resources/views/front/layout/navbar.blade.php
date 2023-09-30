@@ -13,7 +13,7 @@
                 <a class="nav-link" href="{{route('dashboard')}}">Notlarım</a>
             </li>
             @hasrole('admin')
-                <li class="nav-item">
+                <li class="nav-item {{request()->routeIs('admin.index')?'active':''}}">
                     <a class="nav-link" href="{{route('admin.index')}}">Kullanıcılar</a>
                 </li>
             @endhasrole

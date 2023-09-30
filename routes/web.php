@@ -35,16 +35,16 @@ Route::middleware([
     //NotesCrudRoutes
 
     ////Create
-    Route::post('/create-note',[noteController::class,"note_create"])->name("note.create");
+    Route::post('/create-note',[noteController::class,"__create"])->name("note.create");
 
     ////Edit
-    Route::get('/edit-note',[noteController::class,"note_edit"])->name('note.edit');
+    Route::get('/edit-note',[noteController::class,"__edit"])->name('note.edit');
 
     ////Update
-    Route::post('/update-note',[noteController::class,"note_update"])->name('note.update');
+    Route::post('/update-note',[noteController::class,"__update"])->name('note.update');
 
     ////Delete
-    Route::delete('/delete-note',[noteController::class,"note_delete"])->name('note.delete');
+    Route::delete('/delete-note',[noteController::class,"__delete"])->name('note.delete');
 
     //AdminCrudRoutes
 
