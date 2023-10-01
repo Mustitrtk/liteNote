@@ -13,5 +13,4 @@ use Illuminate\Support\Facades\Auth;
 class noteController extends NoteCrudRepository
 {
     //
-
 }

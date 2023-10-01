@@ -110,7 +110,7 @@
                 contentType: false,
                 processData: false,
                 data: df,
-                success: function (data) {
+                success: function () {
                     Swal.fire({
                         icon: 'success',
                         title: 'Your work has been saved',
@@ -170,7 +170,7 @@
                 contentType: false,
                 processData: false,
                 data: df,
-                success: function (data) {
+                success: function () {
                     Swal.fire({
                         icon: 'success',
                         title: 'Your work has been saved',
@@ -201,12 +201,23 @@
                     data:{
                         id:id,
                     },
-                    success: function (response){
-                        console.log(response)
-                        location.reload();
+                    success: function (xhr,status,error){
+                        Swal.fire({
+                            icon:'success',
+                            title:'Başarılı',
+                            text:'işlem başarılı',
+                        }).then((result)=>{
+                            if(result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
                     },
-                    error: function (response){
-                        console.log(response)
+                    error: function (xhr,status,error){
+                        Swal.fire({
+                            icon:'error',
+                            title:'Başarısız',
+                            text:error,
+                        })
                     },
                 });
             }

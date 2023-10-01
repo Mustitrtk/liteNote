@@ -74,10 +74,10 @@ class NoteCrudRepository implements CrudRepository
         }
     }
 
-    public function __delete($id)
+    public function __delete(Request $request)
     {
         // TODO: Implement __delete() method.
-        $note = $this->note->findorFail($id);
+        $note = $this->note->findorFail($request->id);
         if (isset($note)){
             $note->delete();
             return response()->json([
